@@ -152,4 +152,34 @@ suite('Unit Tests', () => {
       done();
     });
   });
+  suite('Highlight translation', () => {
+    test('#21', (done) => {
+      assert.equal(
+        translator.translate('Mangoes are my favorite fruit.', 'american-to-british', true),
+        'Mangoes are my <span class="highlight">favourite</span> fruit.',
+      );
+      done();
+    });
+    test('#22', (done) => {
+      assert.equal(
+        translator.translate('I ate yogurt for breakfast.', 'american-to-british', true),
+        'I ate <span class="highlight">yoghurt</span> for breakfast.',
+      );
+      done();
+    });
+    test('#23', (done) => {
+      assert.equal(
+        translator.translate('We watched the footie match for a while.', 'british-to-american', true),
+        'We watched the <span class="highlight">soccer</span> match for a while.',
+      );
+      done();
+    });
+    test('#24', (done) => {
+      assert.equal(
+        translator.translate('Paracetamol takes up to an hour to work.', 'british-to-american', true),
+        '<span class="highlight">Tylenol</span> takes up to an hour to work.',
+      );
+      done();
+    });
+  });
 });
